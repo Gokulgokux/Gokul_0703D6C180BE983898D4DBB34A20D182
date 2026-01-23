@@ -1,0 +1,157 @@
+function generateMarksheet() {
+  let name = document.getElementById("name").value;
+  let roll = document.getElementById("roll").value;
+
+  let maths = Number(document.getElementById("maths").value);
+  let physics = Number(document.getElementById("physics").value);
+  let chemistry = Number(document.getElementById("chemistry").value);
+  let english = Number(document.getElementById("english").value);
+  let computer = Number(document.getElementById("computer").value);
+
+  let total = maths + physics + chemistry + english + computer;
+  let percentage = (total / 500) * 100;
+
+  let grade;
+  if (percentage >= 80) grade = "A";
+  else if (percentage >= 60) grade = "B";
+  else if (percentage >= 40) grade = "C";
+  else grade = "D";
+
+  let result =
+    maths >= 35 &&
+    physics >= 35 &&
+    chemistry >= 35 &&
+    english >= 35 &&
+    computer >= 35
+      ? "Pass"
+      : "Fail";
+
+  document.getElementById("result").innerHTML = `
+    <p><strong>Name:</strong> ${name}</p>
+    <p><strong>Roll No:</strong> ${roll}</p>
+    <p><strong>Total Marks:</strong> ${total}/500</p>
+    <p><strong>Percentage:</strong> ${percentage.toFixed(2)}%</p>
+    <p><strong>Grade:</strong> ${grade}</p>
+    <p class="${result === "Pass" ? "pass" : "fail"}">
+      <strong>Result:</strong> ${result}
+    </p>
+  `;
+} 
+  
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f2f2f2;
+}
+
+.container {
+  width: 400px;
+  background: #fff;
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-top: 10px;
+}
+
+input {
+  width: 100%;
+  padding: 6px;
+  margin-top: 5px;
+}
+
+button {
+  width: 100%;
+  margin-top: 15px;
+  padding: 10px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+.result {
+  margin-top: 20px;
+  padding: 10px;
+  background: #f9f9f9;
+  border-radius: 5px;
+}
+
+.pass {
+  color: green;
+  font-weight: bold;
+}
+
+.fail {
+  color: red;
+  font-weight: bold;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Marksheet</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h2>Student Marksheet</h2>
+
+    <label>Student Name</label>
+    <input type="text" id="name">
+
+    <label>Roll Number</label>
+    <input type="text" id="roll">
+
+    <label>Maths</label>
+    <input type="number" id="maths">
+
+    <label>Physics</label>
+    <input type="number" id="physics">
+
+    <label>Chemistry</label>
+    <input type="number" id="chemistry">
+
+    <label>English</label>
+    <input type="number" id="english">
+
+    <label>Computer</label>
+    <input type="number" id="computer">
+
+    <button onclick="generateMarksheet()">Generate Marksheet</button>
+
+    <div id="result" class="result"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
